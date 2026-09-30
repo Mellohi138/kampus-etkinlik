@@ -1,0 +1,50 @@
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Etkinlik Ekle</title>
+    <link rel="stylesheet" href="css/2416501046.css">
+</head>
+
+<body>
+    <h1>Etkinlik Ekle</h1>
+    <nav>
+        <a href="index.html">Ana Sayfa</a> |
+        <a href="etkinlikler.html">Etkinlikler</a> |
+        <a href="etkinlik-detay.html">Etkinlik Detayları</a> |
+        <a href="etkinlik-guncelle.html">Etkinlik Güncelle</a>
+    </nav>
+
+    <main class="form-icerik">
+        <form action="">
+            <div class="form-grup">
+                <label for="name">Etkinlik Adı</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-grup">
+                <label for="category">Kategori</label>
+                <select id="category" name="category">
+                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="seminer">Seminer</option>
+                    <option value="atolye">Atölye</option>
+                    <option value="soylesi">Söyleşi</option>
+                </select>
+            </div>
+
+            <div class="form-grup">
+                <label for="date">Tarih</label>
+                <input type="text" id="date" name="date">
+            </div>
+
+            <div class="form-grup">
+                <label for="desc">Açıklama</label>
+                <textarea id="desc" name="desc"></textarea>
+            </div>
+
+            <button type="submit" class="kaydet-btn">Kaydet</button>
+        </form>
+    </main>
+</body>
+
+</html>
