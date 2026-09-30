@@ -295,14 +295,6 @@ footer {
     margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-    .index-mobil-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--bosluk-m);
-    }
-}
-
 .etkinlikler-mobil-grid {
     display: flex;
     flex-direction: column;
@@ -321,14 +313,6 @@ footer {
 
 .etkinlikler-mobil-grid .etkinlik-kart p {
     margin-bottom: 0;
-}
-
-@media (min-width: 768px) {
-    .etkinlikler-mobil-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: var(--bosluk-m);
-    }
 }
 
 .detay-mobil-container {
@@ -354,11 +338,24 @@ footer {
     font-size: 0.95rem;
 }
 
-@media (min-width: 768px) {
+
+@media (min-width: 700px) {
+    .index-mobil-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--bosluk-m);
+    }
+
     .detay-mobil-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 20px;
+    }
+
+    .etkinlikler-mobil-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--bosluk-m);
     }
 }
