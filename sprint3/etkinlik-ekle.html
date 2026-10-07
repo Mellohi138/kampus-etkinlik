@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etkinlik Ekle</title>
+    <link rel="stylesheet" href="css/2416501046.css">
+    <script type="module" src="js/event-form.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Etkinlik Ekle</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a> |
+            <a href="etkinlikler.html">Etkinlikler</a>
+        </nav>
+    </header>
+
+    <main class="form-icerik">
+        <form id="etkinlik-formu" novalidate>
+            <div class="form-grup">
+                <label for="name">Etkinlik Adı *</label>
+                <input type="text" id="name" name="ad">
+                <span id="ad-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="category">Kategori *</label>
+                <select id="category" name="kategori">
+                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="Seminer">Seminer</option>
+                    <option value="Atölye">Atölye</option>
+                    <option value="Söyleşi">Söyleşi</option>
+                </select>
+                <span id="kategori-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="date">Tarih *</label>
+                <input type="date" id="date" name="tarih">
+                <span id="tarih-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="time">Saat *</label>
+                <input type="time" id="time" name="saat">
+                <span id="saat-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="location">Yer *</label>
+                <input type="text" id="location" name="yer" placeholder="Örn. A Blok Konferans Salonu">
+                <span id="yer-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="capacity">Kontenjan</label>
+                <input type="number" id="capacity" name="kontenjan">
+                <span id="kontenjan-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <div class="form-grup">
+                <label for="desc">Açıklama</label>
+                <textarea id="desc" name="aciklama"></textarea>
+                <span id="aciklama-hata" class="hata-metni"
+                    style="color: red; font-size: 0.85em; display: block; margin-top: 4px;"></span>
+            </div>
+
+            <button type="submit" class="kaydet-btn">Kaydet</button>
+        </form>
+
+        <div id="form-mesaj" style="margin-top: 20px;"></div>
+    </main>
+</body>
+
+</html>
