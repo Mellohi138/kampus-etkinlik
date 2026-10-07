@@ -1,9 +1,13 @@
+import { events } from "./data.js";
+
 const form = document.querySelector("#etkinlik-formu");
 const mesajKutusu = document.querySelector("#form-mesaj");
 
+const urlParams = new URLSearchParams(location.search);
+const etkinlikId = urlParams.get("id");
+
 if (form && form.dataset.mode === "guncelle") {
-    const id = new URLSearchParams(location.search).get("id");
-    const etkinlik = events.find((e) => e.id === id);
+    const etkinlik = events.find((e) => e.id === etkinlikId);
 
     if (etkinlik) {
         form.elements["ad"].value = etkinlik.title || "";
@@ -35,7 +39,6 @@ if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Form alanlarını ve hata span'lerini seç
         const adInput = form.elements["ad"];
         const kategoriSelect = form.elements["kategori"];
         const tarihInput = form.elements["tarih"];
@@ -59,11 +62,21 @@ if (form) {
         if (mesajKutusu) mesajKutusu.innerHTML = "";
 
         const fd = new FormData(form);
+
+        const hamTarih = fd.get("tarih");
+        let formatliTarih = hamTarih;
+        if (hamTarih && hamTarih.includes("-")) {
+            const p = hamTarih.split("-");
+            if (p.length === 3) formatliTarih = `${p[2]}-${p[1]}-${p[0]}`;
+        }
+
+        const currentId = form.dataset.mode === "guncelle" && etkinlikId ? etkinlikId : ("event-" + Date.now());
+
         const data = {
-            id: "event-" + Date.now(),
+            id: currentId,
             title: fd.get("ad") ? fd.get("ad").trim() : "",
             category: fd.get("kategori") ? fd.get("kategori").trim() : "",
-            date: fd.get("tarih") ? fd.get("tarih").trim() : "",
+            date: formatliTarih,
             time: fd.get("saat") ? fd.get("saat").trim() : "",
             location: fd.get("yer") ? fd.get("yer").trim() : "",
             capacity: fd.get("kontenjan") && fd.get("kontenjan").trim() !== "" ? Number(fd.get("kontenjan")) : null,
@@ -84,7 +97,7 @@ if (form) {
             if (kategoriHata) kategoriHata.textContent = errors.kategori;
         }
 
-        if (!data.date) {
+        if (!hamTarih) {
             errors.tarih = "Tarih seçin.";
             if (tarihInput) tarihInput.setAttribute("aria-invalid", "true");
             if (tarihHata) tarihHata.textContent = errors.tarih;
@@ -113,9 +126,10 @@ if (form) {
         }
 
         if (mesajKutusu) {
+            const baslikMesaj = form.dataset.mode === "guncelle" ? "Etkinlik güncellendi (bu sprintte kaydedilmez):" : "Etkinlik oluşturuldu (bu sprintte kaydedilmez):";
             mesajKutusu.innerHTML = `
                 <div style="border: 1px solid #16a34a; background-color: #f0fdf4; padding: 20px; border-radius: 8px; color: #166534;">
-                    <p style="font-weight: bold; margin-bottom: 10px;">Etkinlik oluşturuldu (bu sprintte kaydedilmez):</p>
+                    <p style="font-weight: bold; margin-bottom: 10px;">${baslikMesaj}</p>
                     <pre style="margin: 0; font-family: monospace;">${JSON.stringify(data, null, 2)}</pre>
                 </div>
             `;
