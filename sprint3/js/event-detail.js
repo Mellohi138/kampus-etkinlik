@@ -72,7 +72,9 @@ if (mainContainer) {
                 
                 <div style="margin-top: 25px; display: flex; gap: 10px;">
                     <a href="etkinlikler.html" class="geri-link">&larr; Listeye dön</a>
+                    <a href="etkinlik-guncelle.html?id=${event.id}" class="geri-link" style="background-color: hsl(var(--ton) 65% 38%); color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none;">Bu etkinliği güncelle</a>
                 </div>
+            </section>
             </section>
         `;
     }

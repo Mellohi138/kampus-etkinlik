@@ -1,6 +1,36 @@
 const form = document.querySelector("#etkinlik-formu");
 const mesajKutusu = document.querySelector("#form-mesaj");
 
+if (form && form.dataset.mode === "guncelle") {
+    const id = new URLSearchParams(location.search).get("id");
+    const etkinlik = events.find((e) => e.id === id);
+
+    if (etkinlik) {
+        form.elements["ad"].value = etkinlik.title || "";
+        form.elements["kategori"].value = etkinlik.category || "";
+
+        if (etkinlik.date) {
+            const parcalar = etkinlik.date.split("-");
+            if (parcalar.length === 3) {
+                form.elements["tarih"].value = `${parcalar[2]}-${parcalar[1]}-${parcalar[0]}`;
+            }
+        }
+
+        form.elements["saat"].value = etkinlik.time || "";
+        form.elements["yer"].value = etkinlik.location || "";
+        form.elements["kontenjan"].value = etkinlik.capacity !== null ? etkinlik.capacity : "";
+        form.elements["aciklama"].value = etkinlik.description || "";
+    } else {
+        form.outerHTML = `
+            <div style="border: 1px solid red; background-color: #ffe6e6; padding: 20px; border-radius: 5px; color: #a00; max-width: 600px; margin: 20px auto;">
+                <p>Güncellenecek etkinlik seçilmedi. Önce listeden bir etkinlik seçin, detay sayfasındaki "Bu etkinliği güncelle" butonunu kullanın.</p>
+            </div>
+            <br>
+            <a href="etkinlikler.html" class="kaydet-btn" style="display: inline-block; text-decoration: none; text-align: center; background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 4px;">Etkinliklere git</a>
+        `;
+    }
+}
+
 if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
