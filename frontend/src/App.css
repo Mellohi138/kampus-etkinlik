@@ -1,0 +1,367 @@
+:root {
+  --no: 2416501046;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: "Courier New", serif;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+}
+
+body {
+  font-family: var(--font);
+  background-color: #fff;
+  color: #222;
+  margin: 20px;
+}
+
+h1,
+h2 {
+  color: var(--renk-ana);
+}
+
+nav a {
+  color: var(--renk-ana);
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.etkinlik-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--bosluk-m);
+  margin-top: var(--bosluk-m);
+  margin-bottom: calc(var(--bosluk-m) * 2);
+}
+
+.etkinlik-kart {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--kose);
+  padding: calc(var(--bosluk-m) * 1.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.etkinlik-kart h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  color: #0d1b2a;
+}
+
+.etkinlik-kart p {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.detay-link {
+  color: var(--renk-ana);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.detay-link:hover {
+  text-decoration: underline;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: var(--bosluk-m);
+  margin-bottom: calc(var(--bosluk-m) * 2);
+}
+
+td,
+th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #666;
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+}
+
+.detay-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 0 0 var(--kose) var(--kose);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.afis-bolumu {
+  flex: 1;
+  min-width: 280px;
+}
+
+.afis-kutu {
+  background-color: #d4edda;
+  border-radius: var(--kose);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #155724;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 1px solid #c3e6cb;
+}
+
+.afis-bolumu figcaption {
+  margin-top: 8px;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.bilgi-bolumu {
+  flex: 1;
+  min-width: 280px;
+}
+
+.bilgi-bolumu dl {
+  border: 1px solid #e0e0e0;
+  border-radius: var(--kose);
+  padding: 15px;
+  margin-top: 0;
+  background-color: #fff;
+}
+
+.bilgi-bolumu dl div {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.bilgi-bolumu dl div:last-child {
+  border-bottom: none;
+}
+
+.bilgi-bolumu dt {
+  font-weight: bold;
+  color: #222;
+}
+
+.bilgi-bolumu dd {
+  margin: 0;
+  color: #444;
+}
+
+.bilgi-bolumu p {
+  color: #333;
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+
+.geri-link {
+  color: var(--renk-ana);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.geri-link:hover {
+  text-decoration: underline;
+}
+
+.index-icerik {
+  background-color: #f6f8f6;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 0 0 var(--kose) var(--kose);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.aciklama-metin {
+  font-size: 1.05rem;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.tum-etkinlikler-link {
+  display: inline-block;
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 1.05rem;
+}
+
+.tum-etkinlikler-link:hover {
+  text-decoration: underline;
+}
+
+.form-icerik {
+  background-color: #f6f8f6;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 0 0 var(--kose) var(--kose);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-grup {
+  margin-bottom: 15px;
+}
+
+.form-grup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+.form-grup input[type="text"],
+.form-grup select,
+.form-grup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--kose);
+  background-color: #fff;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.form-grup input.hata {
+  border-color: #d9534f;
+  background-color: #fdf7f7;
+  color: #a94442;
+}
+
+.form-grup textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+.kaydet-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--renk-ana);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--kose);
+  cursor: pointer;
+  font-family: var(--font);
+  margin-top: 15px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.kaydet-btn:hover {
+  opacity: 0.9;
+}
+
+.index-mobil-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.index-mobil-grid .etkinlik-kart {
+  padding: 15px;
+}
+
+.index-mobil-grid .etkinlik-kart h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.index-mobil-grid .etkinlik-kart p {
+  margin-bottom: 0;
+}
+
+.etkinlikler-mobil-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.etkinlikler-mobil-grid .etkinlik-kart {
+  padding: 15px;
+}
+
+.etkinlikler-mobil-grid .etkinlik-kart h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.etkinlikler-mobil-grid .etkinlik-kart p {
+  margin-bottom: 0;
+}
+
+.detay-mobil-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detay-mobil-container .detay-grup {
+  margin-bottom: 12px;
+}
+
+.detay-mobil-container .detay-grup strong {
+  display: block;
+  font-size: 1rem;
+  color: #111;
+  margin-bottom: 2px;
+}
+
+.detay-mobil-container .detay-grup p {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+
+@media (min-width: 600px) {
+  .index-mobil-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--bosluk-m);
+  }
+
+  .detay-mobil-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .etkinlikler-mobil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--bosluk-m);
+  }
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: red;
+}
