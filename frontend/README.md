@@ -1,2 +1,2 @@
 # kampus-etkinlik
-https://yigittunc-frontend.vercel.app /
+https://yigittunc-frontend.vercel.app/
