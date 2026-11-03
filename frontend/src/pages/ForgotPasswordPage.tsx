@@ -9,7 +9,7 @@ export default function ForgotPasswordPage() {
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        // E-posta kontrolü: @ işareti var mı?[cite: 9]
+
         const found = email.includes("@") ? "" : "Geçerli bir e-posta girin.";
         setError(found);
         setSent(found === "");

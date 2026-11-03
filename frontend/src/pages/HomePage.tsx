@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom"; // 1. Buraya useNavigate eklendi
+import { Link, useNavigate } from "react-router-dom";
 import { useEvents } from "../context/EventsContext";
-import EventList from "../components/events/EventList"; // veya kendi yolunuz
+import EventList from "../components/events/EventList";
 
 export default function HomePage() {
     const { events } = useEvents();

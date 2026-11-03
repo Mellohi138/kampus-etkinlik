@@ -19,23 +19,15 @@ export default function RegisterPage() {
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const found: RegisterErrors = {};
-
-        // 1. Ad Soyad kontrolü (en az 3 karakter)[cite: 7]
         if (name.trim().length < 3) {
             found.name = "Ad Soyad en az 3 karakter olmalı.";
         }
-
-        // 2. E-posta kontrolü (@ olmalı)[cite: 7]
         if (!email.includes("@")) {
             found.email = "Geçerli bir e-posta girin.";
         }
-
-        // 3. Şifre kontrolü (en az 6 karakter)[cite: 7]
         if (password.length < 6) {
             found.password = "Şifre en az 6 karakter olmalı.";
         }
-
-        // 4. Şifre eşleşme kontrolü[cite: 7]
         if (password2 !== password) {
             found.password2 = "Şifreler aynı değil.";
         }

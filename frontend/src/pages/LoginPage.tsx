@@ -67,7 +67,6 @@ export default function LoginPage() {
                 </button>
             </form>
 
-            {/* Yan yana duran, ekran daraldığında alt alta geçen responsive yapı */}
             <div
                 style={{
                     display: "flex",

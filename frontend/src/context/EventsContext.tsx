@@ -22,7 +22,6 @@ interface EventsContextValue {
 
 const EventsContext = createContext<EventsContextValue | null>(null);
 
-// toEvent: Form verisini CampusEvent nesnesine dönüştürür
 function toEvent(id: string, data: EventFormData): CampusEvent {
     return {
         id,
@@ -40,17 +39,14 @@ function toEvent(id: string, data: EventFormData): CampusEvent {
 export function EventsProvider({ children }: { children: ReactNode }) {
     const [events, setEvents] = useState<CampusEvent[]>(initialEvents);
 
-    // Ekle: Yeni etkinliği dizinin sonuna ekler
     function addEvent(data: EventFormData) {
         setEvents([...events, toEvent(`event-${Date.now()}`, data)]);
     }
 
-    // Güncelle: map kullanarak ID'si eşleşen etkinliği değiştirir[cite: 5]
     function updateEvent(id: string, data: EventFormData) {
         setEvents(events.map((e) => (e.id === id ? toEvent(id, data) : e)));
     }
 
-    // Sil: filter kullanarak silinen ID dışındakileri tutar[cite: 5]
     function deleteEvent(id: string) {
         setEvents(events.filter((e) => e.id !== id));
     }

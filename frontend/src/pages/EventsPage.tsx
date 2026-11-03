@@ -10,10 +10,8 @@ export default function EventsPage() {
     const [searchText, setSearchText] = useState("");
     const [category, setCategory] = useState<Category | "">("");
 
-    // Benzersiz kategorileri çıkarıyoruz
     const categories = [...new Set(events.map((e) => e.category))];
 
-    // Arama ve kategori filtrelemesini uyguluyoruz
     const filtered = filterByCategory(
         searchEvents(events, searchText),
         category

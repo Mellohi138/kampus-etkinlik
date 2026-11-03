@@ -27,7 +27,7 @@ export default function EditEventPage() {
     function handleSubmit(data: EventFormData) {
         if (id) {
             updateEvent(id, data);
-            navigate(`/events/${id}`); // Güncelleme sonrası detay sayfasına git
+            navigate(`/events/${id}`);
         }
     }
 

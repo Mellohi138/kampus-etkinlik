@@ -1,21 +1,26 @@
-import { useParams } from "react-router-dom";
-import NotFoundPage from "./NotFoundPage";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEvents } from "../context/EventsContext";
 import EventDetail from "../components/events/EventDetail";
-import { findEventById } from "../utils/filter-events";
-import { useEvents } from "../context/EventsContext"; // Context'i import ediyoruz
 
 export default function EventDetailPage() {
-    const { id } = useParams();
-    const { events } = useEvents(); // Veriyi Context'ten alıyoruz
+    const { id } = useParams<{ id: string }>();
+    const { events } = useEvents();
+    const navigate = useNavigate();
 
-    const event = findEventById(events, id ?? "");
+    const event = events.find((e) => e.id === id);
 
-    if (!event) return <NotFoundPage />;
+    if (!event) {
+        return <p>Etkinlik bulunamadı.</p>;
+    }
 
     return (
         <>
             <h2>Etkinlik Detayları</h2>
-            <EventDetail event={event} />
+            <EventDetail
+                event={event}
+                onBack={() => navigate("/events")}
+                onEdit={() => navigate(`/admin/${event.id}/edit`)}
+            />
         </>
     );
 }
