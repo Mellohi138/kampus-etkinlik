@@ -312,3 +312,65 @@ select[aria-invalid="true"],
 textarea[aria-invalid="true"] {
   border-color: red;
 }
+
+.tablo {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tablo th,
+.tablo td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tablo th {
+  background: var(--renk-ana);
+  color: #fff;
+}
+
+.islemler {
+  display: flex;
+  gap: var(--bosluk-s);
+}
+
+.buton-sil {
+  background: var(--renk-hata);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--kose);
+  cursor: pointer;
+}
+
+@media (max-width: 699px) {
+  .tablo thead {
+    display: none;
+  }
+
+  .tablo tr {
+    display: block;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: var(--kose);
+    background: #fff;
+  }
+
+  .tablo td {
+    display: block;
+    border: none;
+    padding: 6px 0;
+  }
+
+  .tablo td.islemler {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .tablo td[data-baslik]::before {
+    content: attr(data-baslik) ": ";
+    font-weight: 700;
+  }
+}

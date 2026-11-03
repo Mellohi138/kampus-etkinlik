@@ -1,0 +1,116 @@
+import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
+
+interface RegisterErrors {
+    name?: string;
+    email?: string;
+    password?: string;
+    password2?: string;
+}
+
+export default function RegisterPage() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
+    const [errors, setErrors] = useState<RegisterErrors>({});
+    const [sent, setSent] = useState(false);
+
+    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const found: RegisterErrors = {};
+
+        // 1. Ad Soyad kontrolü (en az 3 karakter)[cite: 7]
+        if (name.trim().length < 3) {
+            found.name = "Ad Soyad en az 3 karakter olmalı.";
+        }
+
+        // 2. E-posta kontrolü (@ olmalı)[cite: 7]
+        if (!email.includes("@")) {
+            found.email = "Geçerli bir e-posta girin.";
+        }
+
+        // 3. Şifre kontrolü (en az 6 karakter)[cite: 7]
+        if (password.length < 6) {
+            found.password = "Şifre en az 6 karakter olmalı.";
+        }
+
+        // 4. Şifre eşleşme kontrolü[cite: 7]
+        if (password2 !== password) {
+            found.password2 = "Şifreler aynı değil.";
+        }
+
+        setErrors(found);
+        setSent(Object.keys(found).length === 0);
+    }
+
+    return (
+        <div className="auth-sayfa">
+            <h2>Kayıt Ol</h2>
+
+            {sent && (
+                <p className="mesaj mesaj-basari">
+                    Kayıt simülasyonu başarılı (Demo).
+                </p>
+            )}
+
+            <form onSubmit={handleSubmit} noValidate>
+                <div className="form-grup">
+                    <label htmlFor="name">Ad Soyad</label>
+                    <input
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        aria-invalid={errors.name ? true : undefined}
+                    />
+                    {errors.name && <span className="hata-metni">{errors.name}</span>}
+                </div>
+
+                <div className="form-grup">
+                    <label htmlFor="email">E-posta</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        aria-invalid={errors.email ? true : undefined}
+                    />
+                    {errors.email && <span className="hata-metni">{errors.email}</span>}
+                </div>
+
+                <div className="form-grup">
+                    <label htmlFor="password">Şifre</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        aria-invalid={errors.password ? true : undefined}
+                    />
+                    {errors.password && <span className="hata-metni">{errors.password}</span>}
+                </div>
+
+                <div className="form-grup">
+                    <label htmlFor="password2">Şifre (tekrar)</label>
+                    <input
+                        type="password"
+                        id="password2"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
+                        aria-invalid={errors.password2 ? true : undefined}
+                    />
+                    {errors.password2 && <span className="hata-metni">{errors.password2}</span>}
+                </div>
+
+                <button type="submit" className="buton">
+                    Kayıt ol
+                </button>
+            </form>
+
+            <div style={{ marginTop: "15px" }}>
+                <Link to="/login">Zaten hesabın var mı? Giriş yap</Link>
+            </div>
+        </div>
+    );
+}
