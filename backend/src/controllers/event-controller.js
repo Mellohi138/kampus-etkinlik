@@ -1,13 +1,19 @@
 import { events } from "../data/events.js";
+import mongoose from "mongoose";
+import { Event } from "../models/event-model.js";
 
-export function getEvents(req, res) {
-    const { category } = req.query;
+export async function getEvents(req, res, next) {
+    try {
+        const filter = req.query.category
+            ? { category: req.query.category }
+            : {};
 
-    const list = category
-        ? events.filter((e) => e.category === category)
-        : events;
+        const events = await Event.find(filter).sort({ date: 1 });
 
-    res.json(list);
+        res.json(events);
+    } catch (err) {
+        next(err);
+    }
 }
 
 export function getEventById(req, res) {
