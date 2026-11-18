@@ -1,6 +1,5 @@
-export const events = [
+export const seedEvents = [
     {
-        id: "event-1",
         title: "Kariyer Günleri 2026",
         category: "Seminer",
         capacity: 100,
@@ -10,7 +9,6 @@ export const events = [
         description: "Mezunlarla kariyer söyleşileri ve şirket stantları."
     },
     {
-        id: "event-2",
         title: "Robotik Atölyesi",
         category: "Atölye",
         capacity: 20,
@@ -20,7 +18,6 @@ export const events = [
         description: "Arduino ile çizgi izleyen robot yapımı, başlangıç seviyesi."
     },
     {
-        id: "event-3",
         title: "Web Tasarım Atölyesi",
         category: "Atölye",
         capacity: 30,
@@ -30,7 +27,6 @@ export const events = [
         description: "HTML ve CSS ile kişisel sayfanı yap"
     },
     {
-        id: "event-4",
         title: "Siber Güvenlik Söyleşisi",
         category: "Söyleşi",
         capacity: 50,
@@ -40,7 +36,6 @@ export const events = [
         description: "Sektörden bir uzmanla güvenlik kariyeri üzerine sohbet."
     },
     {
-        id: "event-5",
         title: "Girişimcilik Zirvesi",
         category: "Seminer",
         capacity: 150,
@@ -50,7 +45,6 @@ export const events = [
         description: "Genç girişimcilerle başarı hikayeleri ve fikir geliştirme."
     },
     {
-        id: "event-6",
         title: "Yapay Zeka Sohbetleri",
         category: "Söyleşi",
         capacity: 80,
