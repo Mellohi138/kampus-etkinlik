@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Event } from "../models/event-model.js";
+import { todayStart } from "../utils/date.js";
 
 const KORUNAN_ALANLAR = [
     "_id",
@@ -10,9 +11,20 @@ const KORUNAN_ALANLAR = [
 
 export async function getEvents(req, res, next) {
     try {
-        const filter = req.query.category
-            ? { category: req.query.category }
-            : {};
+        const { category, search } = req.query;
+
+        const filter = {};
+
+        if (category) filter.category = category;
+
+        if (search) {
+            const guvenli = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+            filter.title = {
+                $regex: guvenli,
+                $options: "i"
+            };
+        }
 
         const events = await Event.find(filter).sort({ date: 1 });
 
@@ -54,7 +66,6 @@ export async function createEvent(req, res, next) {
         next(err);
     }
 }
-
 
 export async function updateEvent(req, res, next) {
     try {
@@ -107,6 +118,33 @@ export async function updateEvent(req, res, next) {
     }
 }
 
+export async function deleteEvent(req, res, next) {
+    try {
+        if (!mongoose.isValidObjectId(req.params.id))
+            return notFound(res);
+
+        const event = await Event.findByIdAndDelete(req.params.id);
+
+        if (!event) return notFound(res);
+
+        res.status(204).end();
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function getUpcomingEvents(req, res, next) {
+    try {
+        const events = await Event
+            .find({ date: { $gte: todayStart() } })
+            .sort({ date: 1, time: 1 });
+
+        res.json(events);
+    } catch (err) {
+        next(err);
+    }
+}
 
 function notFound(res) {
     return res.status(404)
